@@ -1,0 +1,9 @@
+tr:hover {
+  cursor: pointer;
+  user-select: none;
+}
+
+.btnCont {
+  display: flex;
+  justify-content: flex-end;
+}

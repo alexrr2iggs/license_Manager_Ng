@@ -1,0 +1,101 @@
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="licenceForm" [formGroup]="licenceForm">
+
+          <div class="form-group" *ngIf="licence">
+            <label for="serialNumberIn">Numero seriale</label>
+            <input [ngClass]="{ 'is-invalid': submitted && f.serialNumber.errors }" formControlName="serialNumber" type="text" class="form-control" id="serialNumberIn">
+          </div>
+
+          <div class="form-group">
+            <label for="creationDateIn">Data creazione</label>
+            <input formControlName="creationDate" type="text" class="form-control" id="creationDateIn" #creationDateIn>
+          </div>
+
+          <div class="form-group">
+            <label for="expirationDateIn">Data scadenza</label>
+            <input [ngClass]="{ 'is-invalid': submitted && f.expirationDate.invalid }" formControlName="expirationDate" type="date" class="form-control" id="expirationDateIn" #expirationDateIn>
+            <div class="invalid-feedback">
+              <div *ngFor="let validation of licenceValidationMessages.expirationDate">
+                <div class="error-message" *ngIf="licenceForm.get('expirationDate').hasError(validation.type)">{{validation.message}}</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="typeIn">tipo</label>
+            <select [ngClass]="{ 'is-invalid': submitted && f.typeId.invalid }" formControlName="typeId" class="form-control" id="typeIn">
+              <option *ngFor="let type of types" [value]="type.id" [id]="type.type" [selected]="type.id===licence?.type?.id">{{type.type}}</option>
+            </select>
+            <div class="invalid-feedback">
+              <div *ngFor="let validation of licenceValidationMessages.typeId">
+                <div class="error-message" *ngIf="licenceForm.get('typeId').hasError(validation.type)">{{validation.message}}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="TUCIn">TUC</label>
+            <input numbersOnly [ngClass]="{ 'is-invalid': submitted && f.TUC.invalid }" formControlName="TUC" type="text" class="form-control" id="TUCIn" required>
+            <div class="invalid-feedback">
+              <div *ngFor="let validation of licenceValidationMessages.TUC">
+                <div class="error-message" *ngIf="licenceForm.get('TUC').hasError(validation.type)">{{validation.message}}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="TUC_PIn">TUC_P</label>
+            <input numbersOnly [ngClass]="{ 'is-invalid': submitted && f.TUC_P.invalid }" formControlName="TUC_P" type="text" class="form-control" id="TUC_PIn">
+            <div class="invalid-feedback">
+              <div *ngFor="let validation of licenceValidationMessages.TUC_P">
+                <div class="error-message" *ngIf="licenceForm.get('TUC_P').hasError(validation.type)">{{validation.message}}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label numbersOnly for="OFF_NETIn">OFF_NET</label>
+            <input [ngClass]="{ 'is-invalid': submitted && f.OFF_NET.invalid }" formControlName="OFF_NET" type="text" class="form-control" id="OFF_NETIn">
+            <div class="invalid-feedback">
+              <div *ngFor="let validation of licenceValidationMessages.OFF_NET">
+                <div class="error-message" *ngIf="licenceForm.get('OFF_NET').hasError(validation.type)">{{validation.message}}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group form-check">
+            <input formControlName="TLS" class="form-check-input" type="checkbox" id="TLSIn">
+            <label class="form-check-label" for="TLSIn">TLS</label>
+          </div>
+
+          <div class="form-group">
+            <label for="descriptionIn">Descrizione</label>
+            <textarea formControlName="description" class="form-control" id="descriptionIn"></textarea>
+          </div>
+
+          <div class="modal-footer">
+
+            <button *ngIf="!sending" type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Annulla</button>
+            <button *ngIf="!sending" type="submit" class="btn btn-primary" (click)="onSubmit()">Salva</button>
+
+            <div *ngIf="sending" class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+
+

@@ -1,0 +1,21 @@
+<table class="table table-sm table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th style="width:80%" scope="col">Ragione Sociale</th>
+      <th style="width:20%" class="text-center" scope="col">Numero Licenze</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users" [routerLink]="['/user-details', user.id]">
+      <td>{{user.businessName}}</td>
+      <td class="text-center">{{user.licenciesNr}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="btnCont">
+  <button type="button" class="btn btn-primary mt-1" (click)="openUserFormModal()">Aggiungi utente</button>
+</div>
+
+
+

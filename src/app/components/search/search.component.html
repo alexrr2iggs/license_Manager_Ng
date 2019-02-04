@@ -1,0 +1,64 @@
+<form class="form-inline">
+  <div class="container row">
+    <input type="search" placeholder="Cerca..." class="form-control" />
+
+    <button class="btn btn-primary ml-2 custBtnoutlineLess" (click)="onSearchClick()">Cerca</button>
+    <div class="btn-group ml-2" role="group" >
+      <button type="button" [ngClass]="{ 'btn-primary': userSearch, 'btn-secondary ': !userSearch }" class="btn custBtnoutlineLess" (click)="onUserClick()">Utenti</button>
+      <button type="button"  [ngClass]="{ 'btn-primary': licenceSearch, 'btn-secondary ': !licenceSearch }" class="btn custBtnoutlineLess" (click)="onLicenceClick()">Licenze</button>
+
+    </div>
+
+    <div class="btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Più filtri
+    </div>
+  </div>
+</form>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+
+   <app-licence-search-filter *ngIf="licenceSearch" (onSearch)="onSerch($event)" [search]="searchSubject.asObservable()"></app-licence-search-filter>
+   <app-user-search-filter *ngIf="userSearch" (onSearch)="onSerch($event)" [search]="searchSubject.asObservable()"></app-user-search-filter>
+
+  </div>
+</div>
+
+<div  class="container" #searchResultCont>
+
+<table *ngIf="licencies.length>0 && licenceSearch" class="table table-sm table-bordered table-striped table-hover mt-1">
+    <thead>
+      <tr>
+        <th scope="col">Numero Seriale</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Data creazione</th>
+        <th scope="col">Data scadenza</th>
+        <th scope="col">Utente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let licence of licencies" [routerLink]="['/licence-details', licence.serialNumber]">
+        <td>{{licence.serialNumber}}</td>
+        <td>{{licence.type.type}}</td>
+        <td>{{licence.creationDate|date}}</td>
+        <td>{{licence.expirationDate|date}}</td>
+        <td>{{licence.user.businessName}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table
+  *ngIf="users.length>0 && userSearch" class="table table-sm table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th style="width:80%" scope="col">Ragione Sociale</th>
+          <th style="width:20%" class="text-center" scope="col">Numero Licenze</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users" [routerLink]="['/user-details', user.id]">
+          <td>{{user.businessName}}</td>
+          <td class="text-center">{{user.licenciesNr}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

@@ -1,0 +1,5 @@
+
+  .custBtnoutlineLess:focus, .custBtnoutlineLess:active:focus, .custBtnoutlineLess.active:focus {
+    outline: none;
+    box-shadow: none;
+  }

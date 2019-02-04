@@ -1,0 +1,135 @@
+<form [formGroup]="licenceSearchForm">
+
+
+  <div class="card custCardStyle">
+    <div class="card-body custCardStyle">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Descrizione</label>
+          <input  formControlName="description" type="text" class="form-control form-control-sm" >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputAddress2">Utente</label>
+          <input  formControlName="user" type="text" class="  form-control form-control-sm" >
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card custCardStyle  mt-3">
+    <div class="card-body custCardStyle">
+      <h6 class="card-title">Data creazione</h6>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">Da</label>
+          <input  formControlName="creationDateSince" type="date" class="  form-control form-control-sm">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">A</label>
+          <input  formControlName="creationDateTo" type="date" class="  form-control form-control-sm">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card custCardStyle  mt-3">
+    <div class="card-body custCardStyle">
+      <h6 class="card-title">Data scadenza</h6>
+      <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">Da</label>
+          <input  formControlName="expirationDateSince" type="date" class="  form-control form-control-sm">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">A</label>
+          <input  formControlName="expirationDateTo" type="date" class="form-control form-control-sm">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card custCardStyle  mt-3">
+    <div class="card-body custCardStyle">
+      <h6 class="card-title">TUC</h6>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">Min</label>
+          <input  formControlName="TUCMin" type="text" class="  form-control form-control-sm">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">Max</label>
+          <input  formControlName="TUCMax" type="text" class="  form-control form-control-sm">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card custCardStyle  mt-3">
+    <div class="card-body custCardStyle">
+      <h6 class="card-title">TUC_P</h6>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">Min</label>
+          <input  formControlName="TUC_PMin" type="text" class="  form-control form-control-sm">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">Max</label>
+          <input  formControlName="TUC_PMax" type="text" class="  form-control form-control-sm">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card custCardStyle  mt-3">
+    <div class="card-body custCardStyle">
+      <h6 class="card-title">OFFNET</h6>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">Min</label>
+          <input  formControlName="OFFNETMin" type="text" class="  form-control form-control-sm">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="creationDateIn">Max</label>
+          <input  formControlName="OFFNETMax" type="text" class="  form-control form-control-sm">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card custCardStyle  mt-3">
+    <div class="card-body custCardStyle">
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputEmail4">Tipo</label>
+          <input  formControlName="type" type="text" class="  form-control form-control-sm" id="inputEmail4">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputAddress2">TLS</label>
+          <input  formControlName="TLS" type="checkbox" class="  form-control form-control-sm" id="inputAddress2">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

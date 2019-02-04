@@ -1,0 +1,130 @@
+<div class="container">
+
+  <div class="card">
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#licenceDetails" role="tab" aria-controls="details" aria-selected="true">Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="licenceDescription-tab" data-toggle="tab" href="#licenceDescription" role="tab" aria-controls="licenceDescription" aria-selected="false">Description</a>
+            </li>
+          </ul>
+
+
+
+          <div class="tab-content ml-1" id="TabContent" *ngIf="licence != undefined">
+            <div class="tab-pane fade show active" id="licenceDetails" role="tabpanel" aria-labelledby="details-tab">
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">Serial Number</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{licence?.serialNumber}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">user</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  <a [routerLink]="'/user-details/'+licence.user.id">{{licence?.user?.businessName}}</a>
+                </div>
+              </div>
+              <hr />
+
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">creadionDate</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{licence?.creationDate | date}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">expirationDate</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{licence?.expirationDate | date}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">type</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{licence?.type?.type}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">TUC</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{licence?.TUC}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">TUC_P</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{licence?.TUC_P}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">OFF_NET</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{licence?.OFF_NET}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <label style="font-weight:bold;">TLS</label>
+                </div>
+                <div class="col-md-8 col-6 font-weight-bold" [ngClass]="{'text-success': licence.TLS>0, 'text-danger': licence.TLS}">
+                  {{licence.TLS}}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="licenceDescription" role="tabpanel" aria-labelledby="licenceDescription-tab">
+              {{licence?.description}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div id="modifyBtnCont" class="pt-3">
+    <button type="button" class="btn btn-primary" (click)="openLicenceFormModal()">Modifica</button>
+    <button type="button" class="btn btn-danger ml-2" (click)="openRemoveConfirmFormModal()" >Rimuovi</button>
+  </div>
+</div>
+

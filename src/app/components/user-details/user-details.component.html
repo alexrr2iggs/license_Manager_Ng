@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{user.businessName}}</h5>
+    <hr />
+    <p class="card-text">{{user.description}}</p>
+    <div class="btnCont">
+      <button type="button" class="btn btn-primary" (click)="openUserFormModal()">Modifica</button>
+      <button type="button" class="btn btn-danger ml-2" (click)="openRemoveConfirmFormModal()">Rimuovi</button>
+    </div>
+  </div>
+</div>
+
+<table *ngIf="licencies.length>0" class="table table-sm table-bordered table-striped table-hover mt-1">
+  <thead>
+    <tr>
+      <th scope="col">Numero Seriale</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let licence of licencies" [routerLink]="['/licence-details', licence.serialNumber]">
+      <td>{{licence.serialNumber}}</td>
+      <td>{{licence.type.type}}</td>
+      <td>{{licence.creationDate|date}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="btnCont">
+  <button type="button" class="btn btn-primary mt-1" (click)="openLicenceFormModal()">Aggiungi licenza</button>
+</div>
+
